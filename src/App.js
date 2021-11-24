@@ -23,11 +23,10 @@ function sunCalc(x, y) {
 }
 
 function sunHorizonCalc(x, y) {
-  let h = 40 - Math.floor(40 * (y / (window.innerHeight - 180)));
+  let h = 40 - Math.floor(25 * (y / (window.innerHeight - 340)));
   let s = 100;
   let l = 90 - Math.floor(70 * (y / window.innerHeight));
-  // fix this, still too orange up top
-  let a = - 0.1 + Math.floor(100 * Math.sin(1.5 * Math.PI * (y / window.innerHeight)) + 110) / 100;
+  let a = Math.floor(100 * Math.sin(2.2 * Math.PI * (y / window.innerHeight) - 800) + 110) / 100;
 
   return `${h}, ${s}%, ${l}%, ${a}`
 }
@@ -67,6 +66,8 @@ function App() {
     let sunHorizonColor = sunHorizonCalc(e.clientX, e.clientY);
     let horizonColor = horizonCalc(e.clientX, e.clientY);
 
+    let glowBottom = (e.clientY * 0.1) - (window.innerHeight * 0.05);
+
     setSun({
       top: e.clientY,
       left: e.clientX,
@@ -75,27 +76,31 @@ function App() {
     });
 
     setHorizon({
-      boxShadow: `0px 0px 1000px hsla(${horizonColor}), 0px 0px 1000px hsla(${horizonColor})`
+      boxShadow: `0px 0px 1000px hsla(${horizonColor}), 0px 0px 10000000px hsla(${horizonColor})`
     });
 
 
     setSunHorizon1({
       left: e.clientX - 140,
+      bottom: glowBottom,
       boxShadow: `0px 0px 5000px hsla(${sunHorizonColor}), 0px 0px 5000px hsla(${sunHorizonColor}), 0px 0px 5000px hsla(${sunHorizonColor})`
     });
 
     setSunHorizon2({
       left: e.clientX - 280,
+      bottom: glowBottom,
       boxShadow: `0px 0px 1000px hsla(${sunHorizonColor}), 0px 0px 1000px hsla(${sunHorizonColor})`
     });
 
     setSunHorizon3({
       left: e.clientX - 490,
+      bottom: glowBottom,
       boxShadow: `0px 0px 800px hsla(${sunHorizonColor})`
     });
 
     setSunHorizon4({
       left: e.clientX - 735,
+      bottom: glowBottom,
       boxShadow: `0px 0px 800px hsla(${sunHorizonColor})`
     });
   }
