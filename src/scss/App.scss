@@ -13,19 +13,71 @@
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  z-index: 10000;
+  z-index: 100;
 }
 
 p {
   margin: 0px;
 }
 
+.earth {
+  position: absolute;
+  width: 120vw;
+  height: 20vh;
+  bottom: 0px;
+  background-color: black;
+  z-index: 10000;
+}
+
+.earth-glow {
+  position: absolute;
+  width: 120vw;
+  height: 20vh;
+  bottom: 0px;
+  background-color: black;
+}
+
+.horizon-glow-1 {
+  position: absolute;
+  width: 300px;
+  height: 15vh;
+  bottom: 5vh;
+  border-radius: 100px;
+  z-index: 4000;
+}
+
+.horizon-glow-2 {
+  position: absolute;
+  width: 600px;
+  height: 20vh;
+  bottom: 0px;
+  z-index: 1000;
+}
+
+.horizon-glow-3 {
+  position: absolute;
+  width: 1000px;
+  height: 15vh;
+  bottom: 5vh;
+  border-radius: 100px;
+  z-index: 4000;
+}
+
+.horizon-glow-4 {
+  position: absolute;
+  width: 1500px;
+  height: 15vh;
+  bottom: 5vh;
+  border-radius: 100px;
+  // background: red;
+  z-index: 4000;
+}
+
 .horizon-fade {
   position: absolute;
   width: 120vw;
   height: 20vh;
-  // background: hsl(40, 100, 30);
-  box-shadow: 0px 0px 1000px hsl(40, 100, 30);
+  margin-left: -40px;
   bottom: 0px;
   z-index: 10;
 }
