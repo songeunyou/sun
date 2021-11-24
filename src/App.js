@@ -5,7 +5,7 @@ import './scss/App.scss';
 function skyCalc(x, y) {
   let h = 205 + Math.floor(35 * (y / window.innerWidth));
   let s = 95 - Math.floor(30 * (y / (window.innerWidth + 500)));
-  let l = 70 - Math.floor(80 * (y / (window.innerHeight + 200)));
+  let l = 70 - Math.floor(85 * (y / (window.innerHeight + 300)));
 
   if (h < 160 && h > 65) {
     h = 65;
@@ -66,13 +66,13 @@ function App() {
     let sunHorizonColor = sunHorizonCalc(e.clientX, e.clientY);
     let horizonColor = horizonCalc(e.clientX, e.clientY);
 
-    let glowBottom = (e.clientY * 0.1) - (window.innerHeight * 0.05);
+    let glowBottom = (e.clientY * 0.05) - (window.innerHeight * 0.02);
 
     setSun({
       top: e.clientY,
       left: e.clientX,
       backgroundColor: `hsl(${sunColor})`,
-      boxShadow: `0px 0px 15px hsla(${sunColor},0.6), 0px 0px 6px hsla(${sunColor},0.6), 0px 0px 2px hsla(${sunColor},0.6)`
+      boxShadow: `0px 0px 25px hsla(${sunColor},1), 0px 0px 20px hsla(${sunColor},1), 0px 0px 15px hsla(${sunColor},1), 0px 0px 10px hsla(${sunColor},1), 0px 0px 6px hsla(${sunColor}, 1), 0px 0px 4px hsla(${sunColor},1), 0px 0px 2px hsla(${sunColor},1)`
     });
 
     setHorizon({
