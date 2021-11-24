@@ -14,6 +14,14 @@ function skyCalc(x, y) {
   return `hsl(${h}, ${s}%, ${l}%)`
 }
 
+function redCalc(x, y) {
+  let h = 200 - Math.floor(580 * (y / window.innerWidth));
+  let s = 40 + Math.floor(40 * (y / (window.innerWidth + 500)));
+  let l = 90 - Math.floor(100 * (y / (window.innerHeight + 300)));
+
+  return `${h}, ${s}%, ${l}%`
+}
+
 function sunCalc(x, y) {
   let h = 40 - Math.floor(40 * (y / (window.innerHeight - 180)));
   let s = 100;
@@ -48,6 +56,7 @@ function App() {
   let [sunHorizon3, setSunHorizon3] = useState({});
   let [sunHorizon4, setSunHorizon4] = useState({});
   let [horizon, setHorizon] = useState({});
+  let [redFilter, setRedFilter] = useState({});
 
   useEffect(() => {
     document.body.style.cursor = 'none';
@@ -65,8 +74,11 @@ function App() {
     let sunColor = sunCalc(e.clientX, e.clientY);
     let sunHorizonColor = sunHorizonCalc(e.clientX, e.clientY);
     let horizonColor = horizonCalc(e.clientX, e.clientY);
+    let redColor = redCalc(e.clientX, e.clientY);
 
     let glowBottom = (e.clientY * 0.05) - (window.innerHeight * 0.02);
+    // let redFilterOpacity = e.clientY / window.innerHeight;
+    let redFilterOpacity = 1;
 
     setSun({
       top: e.clientY,
@@ -79,6 +91,10 @@ function App() {
       boxShadow: `0px 0px 1000px hsla(${horizonColor}), 0px 0px 10000000px hsla(${horizonColor})`
     });
 
+    setRedFilter({
+      opacity: redFilterOpacity,
+      background: `linear-gradient(hsla(${redColor},0), hsla(${redColor}, 1))`
+    });
 
     setSunHorizon1({
       left: e.clientX - 140,
@@ -117,7 +133,7 @@ function App() {
         <div className="horizon-glow-2" style={sunHorizon2}/>
         <div className="horizon-glow-3" style={sunHorizon3}/>
         <div className="horizon-glow-4" style={sunHorizon4}/>
-        <div className="sunrise-red-filter"/>
+        <div className="red-filter" style={redFilter}/>
         <div className="sunrise-light"/>
 
         <div id="sun" style={sun}></div>
