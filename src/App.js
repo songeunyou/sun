@@ -123,9 +123,6 @@ function App() {
   return (
     <div className="App">
       <div id="sky" style={sky}>
-        <p>{sky.backgroundColor}</p>
-        <p>{sun.backgroundColor}</p>
-
         <div className="earth"/>
         <div className="earth-glow" style={horizon}/>
 
@@ -138,6 +135,7 @@ function App() {
 
         <div id="sun" style={sun}></div>
       </div>
+      <p className="text">You are the sun!</p>
     </div>
   );
 }
