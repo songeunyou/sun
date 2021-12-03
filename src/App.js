@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './scss/App.scss';
 
 function skyCalc(x, y) {
-  let h = 205 + Math.floor(35 * (y / window.innerWidth));
-  let s = 95 - Math.floor(30 * (y / (window.innerWidth + 500)));
+  let h = 205 + Math.floor(10 * (y / window.innerHeight));
+  let s = 95 - Math.floor(30 * (y / (window.innerHeight + 500)));
   let l = 70 - Math.floor(85 * (y / (window.innerHeight + 300)));
 
   if (h < 160 && h > 65) {
@@ -15,8 +15,8 @@ function skyCalc(x, y) {
 }
 
 function redCalc(x, y) {
-  let h = 200 - Math.floor(580 * (y / window.innerWidth));
-  let s = 40 + Math.floor(40 * (y / (window.innerWidth + 500)));
+  let h = 200 - Math.floor(320 * (y / window.innerHeight));
+  let s = 40 + Math.floor(40 * (y / (window.innerHeight + 500)));
   let l = 90 - Math.floor(100 * (y / (window.innerHeight + 300)));
 
   return `${h}, ${s}%, ${l}%`
