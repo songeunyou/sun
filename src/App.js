@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './scss/App.scss';
 
+// scale value to keep colors consistent regardless of window height
+const scale =  window.innerHeight / 760;
+
 function skyCalc(x, y) {
   let h = 205 + Math.floor(10 * (y / window.innerHeight));
-  let s = 95 - Math.floor(30 * (y / (window.innerHeight + 500)));
-  let l = 70 - Math.floor(85 * (y / (window.innerHeight + 300)));
+  let s = 95 - Math.floor(30 * (y / (window.innerHeight + 500*scale)));
+  let l = 70 - Math.floor(85 * (y / (window.innerHeight + 300*scale)));
 
-  if (h < 160 && h > 65) {
+  if (h < 160*scale && h > 65*scale) {
     h = 65;
   }
 
@@ -16,22 +19,22 @@ function skyCalc(x, y) {
 
 function redCalc(x, y) {
   let h = 200 - Math.floor(320 * (y / window.innerHeight));
-  let s = 40 + Math.floor(40 * (y / (window.innerHeight + 500)));
-  let l = 90 - Math.floor(100 * (y / (window.innerHeight + 300)));
+  let s = 40 + Math.floor(40 * (y / (window.innerHeight + 500*scale)));
+  let l = 90 - Math.floor(100 * (y / (window.innerHeight + 300*scale)));
 
   return `${h}, ${s}%, ${l}%`
 }
 
 function sunCalc(x, y) {
-  let h = 40 - Math.floor(40 * (y / (window.innerHeight - 180)));
+  let h = 40 - Math.floor(40 * (y / (window.innerHeight - 180*scale)));
   let s = 100;
-  let l = 100 - Math.floor(40 * (y / (window.innerHeight - 180)));
+  let l = 100 - Math.floor(40 * (y / (window.innerHeight - 180*scale)));
 
   return `${h}, ${s}%, ${l}%`
 }
 
 function sunHorizonCalc(x, y) {
-  let h = 40 - Math.floor(25 * (y / (window.innerHeight - 340)));
+  let h = 40 - Math.floor(25 * (y / (window.innerHeight - 340*scale)));
   let s = 100;
   let l = 90 - Math.floor(70 * (y / window.innerHeight));
   let a = Math.floor(100 * Math.sin(2.2 * Math.PI * (y / window.innerHeight) - 800) + 110) / 100;
